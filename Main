@@ -1,0 +1,48 @@
+package Stock;
+import java.util.Scanner;
+public class GerenciamentoEstoque {
+
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Informe os dados do produto:");
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine();
+
+        System.out.print("Preço: ");
+        double preco = scanner.nextDouble();
+
+        System.out.print("Quantidade em Estoque: ");
+        int quantidade = scanner.nextInt();
+
+        Produto produto = new Produto(nome, preco, quantidade);
+
+        System.out.println("Dados do produto: " + produto);
+        
+        while(true) {
+        	
+        Scanner scanner2 = new Scanner(System.in);
+
+        System.out.println("Deseja alterar dados do estoque? ( A - adicionar quantidade / R - remover quantidade / N - não alterar) ");
+        	String op = scanner2.nextLine();
+        		if (op.equalsIgnoreCase("A")) {
+        			System.out.println("Informe a quantidade a ser adicionada: ");
+        			int value = scanner2.nextInt();
+        			produto.adicionarEstoque(value);
+        			System.out.println("Valor adicionado! Dados atualizados: " + produto);
+        		}else if (op.equalsIgnoreCase("R")) {
+        			System.out.println("Informe a quantidade a ser removida: ");
+        			int value = scanner2.nextInt();
+        			produto.removerEstoque(value);
+        			System.out.println("Valor removido! Dados atualizados: " + produto);
+        		}else if (op.equalsIgnoreCase("N")) {
+        			scanner2.close();
+        			break;
+        		}else {
+        			System.out.println("Comando inválido! tente novamente.");
+        		} 		
+    }
+
+	}
+
+}
